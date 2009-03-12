@@ -1,9 +1,10 @@
 module WorklingDelta
   class Indexer < ThinkingSphinx::Deltas::DefaultDelta
-    def do_index(model, instance = nil)
+    def index(model, instance = nil)
       doc_id = instance ? instance.sphinx_document_id : nil
-      WorklingDelta::Worker.async_index(:index_name => delta_index_name(model), :document_id => doc_id)
-    
+      WorklingDelta::Worker.async_index(:delta_index_name => delta_index_name(model), 
+        :document_id => doc_id, :core_index_name => core_index_name(model))
+      
       true
     end
   end

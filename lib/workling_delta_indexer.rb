@@ -1,4 +1,4 @@
-gem "freelancing-god-thinking-sphinx"
+gem "lostboy-thinking-sphinx"
 
 require "thinking_sphinx"
 

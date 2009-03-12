@@ -1,9 +1,9 @@
 class WorklingDelta::Worker < Workling::Base
   def index(options = {})
-    ThinkingSphinx::Deltas::DeltaJob.new(options[:index_name]).perform
+    ThinkingSphinx::Deltas::DeltaJob.new(options[:delta_index_name]).perform
     
     if options[:document_id]
-      ThinkingSphinx::Deltas::FlagAsDeletedJob.new(options[:index_name], 
+      ThinkingSphinx::Deltas::FlagAsDeletedJob.new(options[:core_index_name], 
         options[:document_id]).perform
     end
   end
